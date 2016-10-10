@@ -2,36 +2,35 @@ package com.jcarlton;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Set;
 
 /**
  * @author Jonathan Carlton
  */
-public interface Map<E> extends Iterable<E> {
+public interface Map<K, V> {
+
+    V put(K key, V val);
+
+    V get(Object key);
+
+    V remove(Object key);
+
+    boolean containsKey(Object key);
+
+    boolean containsValue(Object value);
 
     int size();
 
     boolean isEmpty();
 
-    boolean contains(Object element);
-
-    boolean add(E element);
-
-    boolean remove(Object element);
-
-    Iterator<E> iterator();
-
-    boolean containsAll(Collection<?> c);
-
-    boolean addAll(Collection<? extends E> c);
-
-    boolean removeAll(Collection<?> c);
-
-    boolean retainAll(Collection<?> c);
+    void putAll(Map<? extends K, ? extends V> t);
 
     void clear();
 
-    Object[] toArray();
+    Set<K> keySet();
 
-    <T> T[] toArray(T[] a);
+    Collection<V> values();
+
+    Set<java.util.Map.Entry<K, V>> entrySet();
 
 }
